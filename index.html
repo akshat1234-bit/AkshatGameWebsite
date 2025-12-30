@@ -120,23 +120,18 @@ footer span{
 </div>
 
 <script>
-// CHANGE THIS KEY to something unique
-const namespace = "akshatgames";
-const key = "myfirstgame";
+let count = localStorage.getItem("akshat_downloads");
 
-// show count
-fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
-.then(res => res.json())
-.then(data => {
-    document.getElementById("downloads").innerText = data.value;
-})
-.catch(() => {
-    document.getElementById("downloads").innerText = "0";
-});
+if (!count) {
+    count = 0;
+}
 
-// increase count on click
-function countDownload(){
-    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+document.getElementById("downloads").innerText = count;
+
+function countDownload() {
+    count++;
+    localStorage.setItem("akshat_downloads", count);
+    document.getElementById("downloads").innerText = count;
 }
 </script>
 
