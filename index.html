@@ -122,8 +122,10 @@ footer span{
 <script>
 let count = localStorage.getItem("akshat_downloads");
 
+// SET STARTING DOWNLOADS HERE 👇
 if (!count) {
-    count = 0;
+    count = 200;
+    localStorage.setItem("akshat_downloads", count);
 }
 
 document.getElementById("downloads").innerText = count;
